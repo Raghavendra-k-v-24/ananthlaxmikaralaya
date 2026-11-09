@@ -14,7 +14,7 @@ export const SITE = {
   addressEn: "Gyani Garden, Station Road, Chhatrapati Shivaji Nagar, Vijayapura, Karnataka 586104",
   addressKn: "ಗ್ಯಾನಿ ಗಾರ್ಡನ್, ಸ್ಟೇಷನ್ ರಸ್ತೆ, ಛತ್ರಪತಿ ಶಿವಾಜಿ ನಗರ, ವಿಜಯಪುರ, ಕರ್ನಾಟಕ 586104",
   mapsUrl: "https://maps.app.goo.gl/Gdp9NN34QD9pGLqa7",
-  siteUrl: "https://ananthlaxmikaralaya.com",
+  siteUrl: "https://www.ananthlaxmikaralaya.in",
 };
 
 const esc = (s) =>
@@ -88,7 +88,7 @@ function layout({ lang = "en", preheader, body }) {
       ${esc(lang === "kn" ? SITE.addressKn : SITE.addressEn)}<br>
       <a href="tel:${SITE.phoneTel}" style="color:${C.ink};text-decoration:none;">${SITE.phone}</a>
       &nbsp;·&nbsp; <a href="${SITE.mapsUrl}" style="color:${C.gold};">${esc(lang === "kn" ? "ದಾರಿ ತೋರಿಸಿ" : "Get directions")}</a>
-      &nbsp;·&nbsp; <a href="${SITE.siteUrl}" style="color:${C.gold};">ananthlaxmikaralaya.com</a>
+      &nbsp;·&nbsp; <a href="${SITE.siteUrl}" style="color:${C.gold};">ananthlaxmikaralaya.in</a>
     </td></tr>
   </table>
 </td></tr>

@@ -28,7 +28,7 @@ export const config = {
 
   // Email (see src/lib/mail.js). The sender must be on a domain verified in Resend.
   get mailFrom() {
-    return process.env.MAIL_FROM || "Ananth Laxmi Mangal Karalaya <bookings@ananthlaxmikaralaya.com>";
+    return process.env.MAIL_FROM || "Ananth Laxmi Mangal Karalaya <bookings@ananthlaxmikaralaya.in>";
   },
   // Who hears about new enquiries; comma-separated for more than one person.
   get ownerEmails() {
@@ -39,7 +39,7 @@ export const config = {
   },
   // The admin panel's address, for "open this enquiry" links in the owner's email.
   get adminUrl() {
-    return (process.env.ADMIN_URL || "https://admin.ananthlaxmikaralaya.com").replace(/\/+$/, "");
+    return (process.env.ADMIN_URL || "https://admin.ananthlaxmikaralaya.in").replace(/\/+$/, "");
   },
 
   // How long an admin stays signed in.

@@ -1,6 +1,6 @@
 // Where booking enquiries are sent: the API in ../server. Set VITE_ENQUIRY_ENDPOINT
 // in .env (local) or in the Vercel project settings, e.g.
-//   https://api.ananthlaxmikaralaya.com/api/enquiries
+//   https://api.ananthlaxmikaralaya.in/api/enquiries
 const ENDPOINT = import.meta.env.VITE_ENQUIRY_ENDPOINT;
 
 export class EnquiryNotConfiguredError extends Error {

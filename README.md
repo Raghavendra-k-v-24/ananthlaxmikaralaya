@@ -4,9 +4,9 @@ Three apps, each deployed as its own Vercel project:
 
 | Folder    | What it is                              | Suggested address                         |
 | --------- | --------------------------------------- | ----------------------------------------- |
-| `client/` | The public website with the booking form | `ananthlaxmikaralaya.com`                 |
-| `server/` | The API (Node.js, Express, MongoDB)     | `api.ananthlaxmikaralaya.com`             |
-| `admin/`  | The admin panel for the owner           | `admin.ananthlaxmikaralaya.com`           |
+| `client/` | The public website with the booking form | `ananthlaxmikaralaya.in`                 |
+| `server/` | The API (Node.js, Express, MongoDB)     | `api.ananthlaxmikaralaya.in`             |
+| `admin/`  | The admin panel for the owner           | `admin.ananthlaxmikaralaya.in`           |
 
 Booking form → `POST /api/enquiries` on the server → saved in MongoDB → seen and managed in the admin panel.
 
@@ -49,19 +49,19 @@ so all three folders can live in one repository: create three Vercel projects fr
   - `MONGODB_URI`: the Atlas string from step 1
   - `JWT_SECRET`: a long random value. Generate one with
     `node -e "console.log(require('crypto').randomBytes(48).toString('base64url'))"`
-  - `ALLOWED_ORIGINS`: `https://ananthlaxmikaralaya.com,https://www.ananthlaxmikaralaya.com,https://admin.ananthlaxmikaralaya.com`
+  - `ALLOWED_ORIGINS`: `https://www.ananthlaxmikaralaya.in,https://ananthlaxmikaralaya.in,https://admin.ananthlaxmikaralaya.in`
     (add the `*.vercel.app` addresses too if you use them)
-- Add the domain `api.ananthlaxmikaralaya.com`. Check `https://api.ananthlaxmikaralaya.com/api/health` returns `{"ok":true}`.
+- Add the domain `api.ananthlaxmikaralaya.in`. Check `https://api.ananthlaxmikaralaya.in/api/health` returns `{"ok":true}`.
 
 ### 2b. Email with Resend (optional, can be added any time later; free: 3,000 emails/month)
 Without these variables the site works normally and simply sends no email.
-1. Sign up at resend.com → **Domains → Add domain** → `ananthlaxmikaralaya.com`.
+1. Sign up at resend.com → **Domains → Add domain** → `ananthlaxmikaralaya.in`.
 2. Add the DNS records Resend shows (at the domain registrar) and wait until the domain shows **Verified**.
 3. **API Keys → Create** (permission: Sending access) and add these to the server project on Vercel:
    - `RESEND_API_KEY`: the key
-   - `MAIL_FROM`: `Ananth Laxmi Mangal Karalaya <bookings@ananthlaxmikaralaya.com>`
+   - `MAIL_FROM`: `Ananth Laxmi Mangal Karalaya <bookings@ananthlaxmikaralaya.in>`
    - `OWNER_EMAIL`: the owner's address (comma-separate several)
-   - `ADMIN_URL`: `https://admin.ananthlaxmikaralaya.com`
+   - `ADMIN_URL`: `https://admin.ananthlaxmikaralaya.in`
 4. Redeploy the server project.
 
 What gets sent:
@@ -87,13 +87,13 @@ Passwords are stored as bcrypt hashes, never as plain text. Signing in fails 5 t
 
 ### 4. Admin project on Vercel
 - Root Directory: `admin`. Framework preset: **Vite**.
-- Environment variable: `VITE_API_URL` = `https://api.ananthlaxmikaralaya.com`
-- Add the domain `admin.ananthlaxmikaralaya.com`. The panel tells search engines not to index it.
+- Environment variable: `VITE_API_URL` = `https://api.ananthlaxmikaralaya.in`
+- Add the domain `admin.ananthlaxmikaralaya.in`. The panel tells search engines not to index it.
 
 ### 5. Website project on Vercel
 - Root Directory: `client`. Framework preset: **Vite**.
-- Environment variable: `VITE_ENQUIRY_ENDPOINT` = `https://api.ananthlaxmikaralaya.com/api/enquiries`
-- Add the domains `ananthlaxmikaralaya.com` and `www.ananthlaxmikaralaya.com`.
+- Environment variable: `VITE_ENQUIRY_ENDPOINT` = `https://api.ananthlaxmikaralaya.in/api/enquiries`
+- Add the domains `ananthlaxmikaralaya.in` and `www.ananthlaxmikaralaya.in`.
 
 `VITE_*` values are baked in at build time: after changing one, redeploy that project.
 

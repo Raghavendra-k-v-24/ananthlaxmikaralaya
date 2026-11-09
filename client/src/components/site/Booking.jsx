@@ -1,6 +1,6 @@
 import { useId, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { differenceInCalendarDays, format, startOfToday } from "date-fns";
+import { addDays, addYears, differenceInCalendarDays, format, startOfToday } from "date-fns";
 import { toast } from "sonner";
 import {
   IconArrowRight,
@@ -296,6 +296,7 @@ export default function Booking() {
                       <input
                         id={ids.name}
                         name="name"
+                        maxLength={80}
                         autoComplete="name"
                         className="field"
                         placeholder={copy.namePh}
@@ -380,7 +381,12 @@ export default function Booking() {
                             selected={range}
                             onSelect={onRange}
                             numberOfMonths={twoMonths ? 2 : 1}
-                            disabled={{ before: startOfToday() }}
+                            disabled={[
+                              { before: startOfToday() },
+                              // the server accepts at most 14 days per enquiry
+                              ...(range?.from && !range?.to ? [{ after: addDays(range.from, 13) }] : []),
+                            ]}
+                            endMonth={addYears(startOfToday(), 3)}
                             startMonth={startOfToday()}
                             className="[--cell-size:2.6rem]"
                           />
@@ -440,6 +446,7 @@ export default function Booking() {
                                 id={ids.other}
                                 className="field"
                                 placeholder={copy.otherPh}
+                                maxLength={60}
                                 value={values.otherOccasion}
                                 onChange={update("otherOccasion")}
                                 aria-invalid={!!errors.otherOccasion}
@@ -457,6 +464,7 @@ export default function Booking() {
                         rows={3}
                         className="field h-auto resize-y py-3 leading-relaxed"
                         placeholder={copy.notesPh}
+                        maxLength={1000}
                         value={values.notes}
                         onChange={update("notes")}
                       />

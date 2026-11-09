@@ -3,7 +3,7 @@ export const SITE = {
   phone: "+91 99168 74924",
   email: "",
   mapsUrl: "https://maps.app.goo.gl/Gdp9NN34QD9pGLqa7",
-  domain: "https://ananthlaxmikaralaya.com",
+  domain: "https://www.ananthlaxmikaralaya.in",
 };
 
 // Labels live in src/i18n/strings.jsx under `nav`
